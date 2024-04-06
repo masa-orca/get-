@@ -103,14 +103,14 @@ do_install() {
 			esac
 
 			(
-				$sh_c 'apt update -qq >/dev/null'
-				$sh_c 'apt upgrade -y -qq >/dev/null'
+				$sh_c 'apt -qq update >/dev/null'
+				$sh_c 'apt -qq upgrade -y >/dev/null'
     			)
          		if [ -r /.dockerenv ]; then
-                		$sh_c 'apt install -y apt-utils'
+                		$sh_c 'apt -qq install -y apt-utils'
        			fi
        			(
-				$sh_c "apt install -y git ${python_version} python3-pip ${venv_version}"
+				$sh_c "apt -qq install -y git ${python_version} python3-pip ${venv_version}"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
