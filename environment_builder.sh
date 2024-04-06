@@ -110,7 +110,7 @@ do_install() {
                 		$sh_c 'apt -qq install -y apt-utils'
        			fi
        			(
-				$sh_c "apt -qq install -y git ${python_version} python3-pip ${venv_version}"
+				$sh_c "DEBIAN_FRONTEND=noninteractive apt -qq install -y git ${python_version} python3-pip ${venv_version}"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
