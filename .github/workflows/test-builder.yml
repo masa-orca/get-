@@ -22,4 +22,5 @@ jobs:
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
+      - uses: actions/checkout@v4
       - run: sh environment_builder.sh
