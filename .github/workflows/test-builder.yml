@@ -11,11 +11,11 @@ jobs:
             tag: 8.9-20231124
           - image: almalinux
             tag: 9.3-20231124
-          - image: ubuntu
-            tag: focal
-          - image: ubuntu
-            tag: jammy
+          # - image: ubuntu
+          #   tag: focal
+          # - image: ubuntu
+          #   tag: jammy
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
-      - run: cat /etc/os-release
+      - run: cat /etc/redhat-release
