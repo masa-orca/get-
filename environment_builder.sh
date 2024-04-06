@@ -86,7 +86,7 @@ do_install() {
 	# Run setup for each distro accordingly
 	case "$lsb_dist" in
 		ubuntu)
-  			DEBIAN_FRONTEND=noninteractive
+  			export DEBIAN_FRONTEND=noninteractive
 			lsb_dist_codename=$( get_distribution_version_codename )
 			case "$lsb_dist_codename" in
 				jammy)
