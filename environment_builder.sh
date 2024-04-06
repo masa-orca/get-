@@ -93,6 +93,7 @@ do_install() {
 					;;
 				focal)
 					python_version=python3.9
+					;;
 				*)
 					python_version=python3
 					;;
@@ -101,12 +102,12 @@ do_install() {
 			(
 				$sh_c 'apt update -qq >/dev/null'
 				$sh_c 'apt upgrade -y -qq >/dev/null'
-				$sh_c 'apt install -y -qq git $python_version $python_version-pip python3-venv >/dev/null'
+				$sh_c "apt install -y -qq git $python_version $python_version-pip python3-venv >/dev/null"
 			)
-			if [ ! -d $HOME/venv ]; then
+			if [ ! -d "$HOME/venv" ]; then
 				(
-					$sh_c '$python_version -m venv $HOME/venv >/dev/null'
-					$sh_c 'source $HOME/venv/bin/activate >/dev/null'
+					$sh_c "$python_version -m venv $HOME/venv >/dev/null"
+					$sh_c "source $HOME/venv/bin/activate >/dev/null"
 					$sh_c 'pip install ansible >/dev/null'
 					$sh_c 'deactivate'
 				)
@@ -121,10 +122,10 @@ do_install() {
 				$sh_c 'dnf update -y'
       			$sh_c 'dnf install -y python3.11 python3.11-pip'
 			)
-			if [ ! -d $HOME/venv ]; then
+			if [ ! -d "$HOME/venv" ]; then
 				(
-					$sh_c 'python3 -m venv $HOME/venv >/dev/null'
-					$sh_c 'source $HOME/venv/bin/activate >/dev/null'
+					$sh_c "python3 -m venv $HOME/venv >/dev/null"
+					$sh_c "source $HOME/venv/bin/activate >/dev/null"
 					$sh_c 'pip install ansible >/dev/null'
 					$sh_c 'deactivate'
 				)
@@ -140,7 +141,6 @@ do_install() {
 			exit 1
 			;;
 	esac
-	exit 1
 }
 
 do_install
