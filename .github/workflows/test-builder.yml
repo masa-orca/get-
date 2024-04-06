@@ -7,8 +7,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: almalinux
-            tag: 8.9-20231124
+          # - image: almalinux
+          #   tag: 8.9-20231124
           # - image: almalinux
           #   tag: 9.3-20231124
           # - image: rockylinux
@@ -17,8 +17,8 @@ jobs:
           #   tag: '9.3.20231119'
           # - image: ubuntu
           #   tag: focal
-          # - image: ubuntu
-          #   tag: jammy
+          - image: ubuntu
+            tag: jammy
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
