@@ -1,0 +1,15 @@
+on:
+  push:
+ 
+jobs:
+  example_matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - image: almalinux
+          - tag: 9.3-20231124
+    container:
+      image: ${{ matrix.image }}:${{ matrix.tag }}
+    steps:
+      - run: cat /etc/os-release
