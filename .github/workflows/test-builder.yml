@@ -22,4 +22,4 @@ jobs:
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
-      - run: environment_builder.sh
+      - run: sh environment_builder.sh
