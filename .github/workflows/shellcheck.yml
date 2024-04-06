@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: apt install -y shellcheck
-      - run: shellcheck -v
+      - run: shellcheck environment_builder.sh
