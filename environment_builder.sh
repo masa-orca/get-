@@ -86,7 +86,6 @@ do_install() {
 	# Run setup for each distro accordingly
 	case "$lsb_dist" in
 		ubuntu)
-  			export DEBIAN_FRONTEND=noninteractive
 			lsb_dist_codename=$( get_distribution_version_codename )
 			case "$lsb_dist_codename" in
 				jammy)
@@ -105,7 +104,7 @@ do_install() {
 
 			(
 				$sh_c 'apt -qq update >/dev/null'
-				$sh_c 'apt -qq upgrade -y >/dev/null'
+				$sh_c 'DEBIAN_FRONTEND=noninteractive apt -qq upgrade -y >/dev/null'
     			)
          		if [ -r /.dockerenv ]; then
                 		$sh_c 'apt -qq install -y apt-utils'
