@@ -24,4 +24,5 @@ jobs:
     steps:
       - run: cat /etc/os-release
       - run: dnf update -y
-      - run: dnf search python3
+      - run: dnf install -y python3.11 python3.11-pip
+      - run: python3.11 -m venv venv
