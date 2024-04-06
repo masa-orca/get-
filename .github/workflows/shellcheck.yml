@@ -8,5 +8,6 @@ jobs:
       image: ubuntu:jammy
     steps:
       - uses: actions/checkout@v4
+      - run: apt update
       - run: apt install -y shellcheck
       - run: shellcheck source=/etc/os-release environment_builder.sh
