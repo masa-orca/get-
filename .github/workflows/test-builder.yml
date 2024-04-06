@@ -25,6 +25,6 @@ jobs:
       - run: cat /etc/os-release
       - run: apt update -y
       - run: apt upgrade -y
-      - run: apt install python3.11
+      - run: apt install -y python3.11
       - run: python3 -m venv $HOME/venv
       - run: source venv/bin/activate && pip install ansible
