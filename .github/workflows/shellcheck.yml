@@ -7,4 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt install -y shellcheck
-      - run: shellcheck environment_builder.sh
+      - run: shellcheck source=/etc/os-release environment_builder.sh
