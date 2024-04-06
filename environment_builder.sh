@@ -107,9 +107,7 @@ do_install() {
 			if [ ! -d "$HOME/venv" ]; then
 				(
 					$sh_c "$python_version -m venv $HOME/venv >/dev/null"
-					$sh_c "source $HOME/venv/bin/activate >/dev/null"
-					$sh_c 'pip install ansible >/dev/null'
-					$sh_c 'deactivate'
+					$sh_c "source $HOME/venv/bin/activate && pip install ansible"
 				)
 			else
 				echo 'INFO: venv directiry is already exists.'
