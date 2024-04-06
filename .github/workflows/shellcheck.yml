@@ -4,7 +4,9 @@ on:
 jobs:
   shellcheck:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:jammy
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt install -y shellcheck
+      - run: apt install -y shellcheck
       - run: shellcheck source=/etc/os-release environment_builder.sh
