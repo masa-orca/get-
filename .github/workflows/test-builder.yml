@@ -15,8 +15,8 @@ jobs:
           #   tag: '8.9.20231119'
           # - image: rockylinux
           #   tag: '9.3.20231119'
-          # - image: ubuntu
-          #   tag: focal
+          - image: ubuntu
+            tag: focal
           - image: ubuntu
             tag: jammy
     container:
