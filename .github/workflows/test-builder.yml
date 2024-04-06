@@ -8,7 +8,7 @@ jobs:
       matrix:
         include:
           - image: almalinux
-          - tag: 9.3-20231124
+            tag: 9.3-20231124
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
