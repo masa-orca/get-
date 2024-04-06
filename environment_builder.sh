@@ -107,7 +107,7 @@ do_install() {
                 		$sh_c 'apt install -y apt-utils'
        			fi
        			(
-				$sh_c "apt install -y git $python_version python3-pip python3-venv"
+				$sh_c "apt install -y git ${python_version} python3-pip ${python_version}-venv"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
