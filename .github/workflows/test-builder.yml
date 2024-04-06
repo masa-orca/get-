@@ -15,8 +15,8 @@ jobs:
           #   tag: '8.9.20231119'
           # - image: rockylinux
           #   tag: '9.3.20231119'
-          - image: ubuntu
-            tag: focal
+          # - image: ubuntu
+          #   tag: focal
           - image: ubuntu
             tag: jammy
     container:
@@ -25,6 +25,6 @@ jobs:
       - run: cat /etc/os-release
       - run: apt update -y
       - run: apt upgrade -y
-      - run: apt search python3
-      # - run: python3 -m venv $HOME/venv
-      # - run: source venv/bin/activate && pip install ansible
+      - run: apt install python3.11
+      - run: python3 -m venv $HOME/venv
+      - run: source venv/bin/activate && pip install ansible
