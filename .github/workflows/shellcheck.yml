@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - run: apt update
       - run: apt install -y shellcheck
-      - run: shellcheck source=/etc/os-release environment_builder.sh
+      - run: shellcheck environment_builder.sh
