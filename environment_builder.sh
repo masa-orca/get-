@@ -102,7 +102,7 @@ do_install() {
 			(
 				$sh_c 'apt update -qq >/dev/null'
 				$sh_c 'apt upgrade -y -qq >/dev/null'
-				$sh_c "apt install -y -qq git $python_version $python_version-pip python3-venv >/dev/null"
+				$sh_c "apt install -y -qq git $python_version python3-pip python3-venv >/dev/null"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
