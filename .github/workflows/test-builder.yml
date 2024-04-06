@@ -11,6 +11,10 @@ jobs:
             tag: 8.9-20231124
           - image: almalinux
             tag: 9.3-20231124
+          - image: rockylinux
+            tag: '8.9.20231119'
+          - image: rockylinux
+            tag: '9.3.20231119'
           # - image: ubuntu
           #   tag: focal
           # - image: ubuntu
@@ -18,4 +22,6 @@ jobs:
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
-      - run: cat /etc/redhat-release
+      - run: cat /etc/os-release
+      - run: dnf update -y
+      - run: dnf search python3
