@@ -7,23 +7,24 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: almalinux
-            tag: 8.9-20231124
-          - image: almalinux
-            tag: 9.3-20231124
-          - image: rockylinux
-            tag: '8.9.20231119'
-          - image: rockylinux
-            tag: '9.3.20231119'
-          # - image: ubuntu
-          #   tag: focal
-          # - image: ubuntu
-          #   tag: jammy
+          # - image: almalinux
+          #   tag: 8.9-20231124
+          # - image: almalinux
+          #   tag: 9.3-20231124
+          # - image: rockylinux
+          #   tag: '8.9.20231119'
+          # - image: rockylinux
+          #   tag: '9.3.20231119'
+          - image: ubuntu
+            tag: focal
+          - image: ubuntu
+            tag: jammy
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
       - run: cat /etc/os-release
-      - run: dnf update -y
-      - run: dnf install -y python3.11 python3.11-pip
-      - run: python3.11 -m venv venv
+      - run: apt update -y
+      - run: apt upgrade -y
+      - run: apt install -y python3 python3-pip
+      - run: python3 -m venv $HOME/venv
       - run: source venv/bin/activate && pip install ansible
