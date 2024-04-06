@@ -90,12 +90,15 @@ do_install() {
 			case "$lsb_dist_codename" in
 				jammy)
 					python_version=python3.11
+					venv_version=python3.11-venv
 					;;
 				focal)
 					python_version=python3.9
+					venv_version=python3-venv
 					;;
 				*)
 					python_version=python3
+					venv_version=python3-venv
 					;;
 			esac
 
@@ -107,7 +110,7 @@ do_install() {
                 		$sh_c 'apt install -y apt-utils'
        			fi
        			(
-				$sh_c "apt install -y git ${python_version} python3-pip ${python_version}-venv"
+				$sh_c "apt install -y git ${python_version} python3-pip ${venv_version}"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
