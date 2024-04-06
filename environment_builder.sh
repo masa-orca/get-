@@ -64,8 +64,6 @@ do_install() {
 			sh_c='sudo -E sh -c'
 		elif command_exists su; then
 			sh_c='su -c'
-		elif [ -r /.dockerenv ]; then
-		    sh_c='sh -c'
 		else
 			cat >&2 <<-'EOF'
 			Error: this installer needs the ability to run commands as root.
@@ -73,8 +71,10 @@ do_install() {
 			EOF
 			exit 1
 		fi
-	else
-		echo 'Error: Non-root user can run this installer.'
+       elif [ -r /.dockerenv ]; then
+                sh_c='sh -c'
+       else
+		echo 'Error: Please run this installer as a non-root user.'
 		echo
 		exit 1
 	fi
