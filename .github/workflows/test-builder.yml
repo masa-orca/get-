@@ -7,8 +7,8 @@ jobs:
     strategy:
       matrix:
         include:
-          # - image: almalinux
-          #   tag: 8.9-20231124
+          - image: almalinux
+            tag: 8.9-20231124
           # - image: almalinux
           #   tag: 9.3-20231124
           # - image: rockylinux
@@ -22,9 +22,4 @@ jobs:
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
-      - run: cat /etc/os-release
-      - run: apt update -y
-      - run: apt upgrade -y
-      - run: apt install -y python3.11
-      - run: python3.11 -m venv $HOME/venv
-      - run: source venv/bin/activate && pip install ansible
+      - run: environment_builder.sh
