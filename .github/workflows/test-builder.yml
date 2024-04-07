@@ -15,10 +15,18 @@ jobs:
             tag: '8.9.20231119'
           - image: rockylinux
             tag: '9.3.20231119'
+          - image: debian
+            tag: bullseye
+          - image: debian
+            tag: bookworm
           - image: ubuntu
             tag: focal
           - image: ubuntu
             tag: jammy
+          - image: ubuntu
+            tag: mantic
+          - image: ubuntu
+            tag: noble
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
