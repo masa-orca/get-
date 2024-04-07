@@ -85,10 +85,10 @@ do_install() {
 
 	# Run setup for each distro accordingly
 	case "$lsb_dist" in
-		ubuntu)
+		debian|ubuntu)
 			lsb_dist_codename=$( get_distribution_version_codename )
 			case "$lsb_dist_codename" in
-				jammy)
+				bookworm|jammy|mantic|noble)
 					python_package=python3.11
 					;;
 				focal)
