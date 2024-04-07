@@ -89,16 +89,13 @@ do_install() {
 			lsb_dist_codename=$( get_distribution_version_codename )
 			case "$lsb_dist_codename" in
 				jammy)
-					python_version=python3.11
-					venv_version=python3.11-venv
+					python_package=python3.11
 					;;
 				focal)
-					python_version=python3.9
-					venv_version=python3.9-venv
+					python_package=python3.9
 					;;
 				*)
-					python_version=python3
-					venv_version=python3-venv
+					python_package=python3
 					;;
 			esac
 
@@ -110,7 +107,7 @@ do_install() {
                 		$sh_c 'apt -qq install -y apt-utils'
        			fi
        			(
-				$sh_c "DEBIAN_FRONTEND=noninteractive apt -oDebug::pkgAcquire::Worker=1 install -y git ${python_version} python3-pip ${venv_version}"
+				$sh_c "DEBIAN_FRONTEND=noninteractive apt -qq install -y git ${python_package} python3-pip ${python_package}-venv"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
@@ -124,9 +121,9 @@ do_install() {
 			exit 0
 			;;
 		almalinux|rocky)
-		    (
+			(
 				$sh_c 'dnf update -y'
-      			$sh_c 'dnf install -y python3.11 python3.11-pip'
+      				$sh_c 'dnf install -y python3.11 python3.11-pip'
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
