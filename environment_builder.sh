@@ -111,7 +111,7 @@ do_install() {
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
-					$sh_c "$python_version -m venv $HOME/venv >/dev/null"
+					$sh_c "${python_package} -m venv $HOME/venv >/dev/null"
 					$sh_c ". $HOME/venv/bin/activate && pip install ansible"
 				)
 			else
