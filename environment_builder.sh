@@ -15,7 +15,7 @@ set -e
 # - Creates a python3.x venv on venv directory on user's home directory.
 # - Installs ansible on the venv.
 #
-# Source code is available at hogehoge
+# Source code is available at https://github.com/masa-orca/mandantory-cli-environment-builder
 
 command_exists() {
 	command -v "$@" > /dev/null 2>&1
