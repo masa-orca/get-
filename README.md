@@ -16,5 +16,9 @@ This shell script is available for these OS.
 |Almalinux|9.3|3.11|
 |Rockylinux|8.9|3.11|
 |Rockylinux|9.3|3.11|
+|Debian|bullseye|3.9|
+|Debian|bookworm|3.11|
 |Ubuntu|focal|3.9|
 |Ubuntu|jammy|3.11|
+|Ubuntu|mantic|3.11|
+|Ubuntu|noble|3.11|
