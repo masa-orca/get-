@@ -61,8 +61,10 @@ do_install() {
 	sh_c='sh -c'
 	if [ "$user" != 'root' ]; then
 		if command_exists sudo; then
-			sh_c='sudo -E sh -c'
+                        sudo_c='sudo -E sh -c'
+			sh_c='sh -c'
 		elif command_exists su; then
+                        sudo_c='su -c'
 			sh_c='su -c'
 		else
 			cat >&2 <<-'EOF'
@@ -74,7 +76,7 @@ do_install() {
        elif [ -r /.dockerenv ]; then
                 sh_c='sh -c'
        else
-		echo 'Warning: You are root user now. We recommend to run this script as non-root user.'
+		echo 'Warning: You are root user now. Please run this script as non-root user.'
 		echo
 		exit 1
 	fi
@@ -101,16 +103,16 @@ do_install() {
 
 			(
      				echo "INFO: Upgrading apt packages."
-				$sh_c 'apt -qq update >/dev/null'
-				$sh_c 'DEBIAN_FRONTEND=noninteractive apt -qq upgrade -y >/dev/null'
+				$sudo_c 'apt -qq update >/dev/null'
+				$sudo_c 'DEBIAN_FRONTEND=noninteractive apt -qq upgrade -y >/dev/null'
     			)
          		if [ -r /.dockerenv ]; then
      				echo "INFO: Installing ${python_package}."
-                		$sh_c 'apt -qq install -y apt-utils'
+                		$sudo_c 'apt -qq install -y apt-utils'
        			fi
        			(
      				echo "INFO: Installing ${python_package}"
-				$sh_c "DEBIAN_FRONTEND=noninteractive apt -qq install -y git ${python_package} python3-pip ${python_package}-venv"
+				$sudo_c "DEBIAN_FRONTEND=noninteractive apt -qq install -y git ${python_package} python3-pip ${python_package}-venv"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
@@ -131,9 +133,9 @@ do_install() {
 		almalinux|rocky)
 			(
      				echo "INFO: Updating dnf packages."
-				$sh_c 'dnf -q update -y'
+				$sudo_c 'dnf -q update -y'
      				echo "INFO: Installing python3.11."
-      				$sh_c 'dnf -q install -y python3.11 python3.11-pip'
+      				$sudo_c 'dnf -q install -y python3.11 python3.11-pip'
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
