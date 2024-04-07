@@ -94,7 +94,7 @@ do_install() {
 					;;
 				focal)
 					python_version=python3.9
-					venv_version=python3-venv
+					venv_version=python3.9-venv
 					;;
 				*)
 					python_version=python3
