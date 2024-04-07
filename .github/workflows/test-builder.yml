@@ -2,7 +2,7 @@ on:
   push:
  
 jobs:
-  example_matrix:
+  test_builder:
     runs-on: ubuntu-latest
     strategy:
       matrix:
