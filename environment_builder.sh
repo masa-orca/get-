@@ -100,19 +100,26 @@ do_install() {
 			esac
 
 			(
+     				echo "INFO: Upgrading apt packages."
 				$sh_c 'apt -qq update >/dev/null'
 				$sh_c 'DEBIAN_FRONTEND=noninteractive apt -qq upgrade -y >/dev/null'
     			)
          		if [ -r /.dockerenv ]; then
+     				echo "INFO: Installing ${python_package}."
                 		$sh_c 'apt -qq install -y apt-utils'
        			fi
        			(
+     				echo "INFO: Installing ${python_package}"
 				$sh_c "DEBIAN_FRONTEND=noninteractive apt -qq install -y git ${python_package} python3-pip ${python_package}-venv"
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
+	     				echo "INFO: Generating python venv on $HOME."
 					$sh_c "${python_package} -m venv $HOME/venv >/dev/null"
-					$sh_c ". $HOME/venv/bin/activate && pip install ansible"
+	     				echo "INFO: Installing ansible to venv."
+					$sh_c ". $HOME/venv/bin/activate && pip -q install ansible"
+     	     				echo "INFO: Finished building ansible environment!"
+	     				echo "If you want to use ansible, please run 'source $HOME/venv/bin/activate'"
 				)
 			else
 				echo 'INFO: venv directiry is already exists.'
@@ -122,13 +129,20 @@ do_install() {
 			;;
 		almalinux|rocky)
 			(
+     				echo "INFO: Updating dnf packages."
 				$sh_c 'dnf -q update -y'
+     				echo "INFO: Installing python3.11."
       				$sh_c 'dnf -q install -y python3.11 python3.11-pip'
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
-					$sh_c "python3 -m venv $HOME/venv >/dev/null"
-					$sh_c ". $HOME/venv/bin/activate && pip install ansible"
+	     				echo "INFO: Generating python venv on $HOME."
+					$sh_c "python3.11 -m venv $HOME/venv >/dev/null"
+	     				echo "INFO: Installing ansible to venv."
+					$sh_c ". $HOME/venv/bin/activate && pip -q install ansible"
+	     				echo "INFO: Finished building ansible environment!"
+	     				echo "If you want to use ansible, please run 'source $HOME/venv/bin/activate'"
+     
 				)
 			else
 				echo 'INFO: venv directiry is already exists.'
