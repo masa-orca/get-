@@ -122,15 +122,13 @@ do_install() {
 			;;
 		almalinux|rocky)
 			(
-				$sh_c 'dnf update -y'
-      				$sh_c 'dnf install -y python3.11 python3.11-pip'
+				$sh_c 'dnf -q update -y'
+      				$sh_c 'dnf -q install -y python3.11 python3.11-pip'
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
 					$sh_c "python3 -m venv $HOME/venv >/dev/null"
-					$sh_c ". $HOME/venv/bin/activate >/dev/null"
-					$sh_c 'pip install ansible >/dev/null'
-					$sh_c 'deactivate'
+					$sh_c ". $HOME/venv/bin/activate && pip install ansible"
 				)
 			else
 				echo 'INFO: venv directiry is already exists.'
