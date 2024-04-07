@@ -35,5 +35,5 @@ jobs:
   test_builder_with_curl:
     runs-on: ubuntu-latest
     steps:
-      - run: curl https://raw.githubusercontent.com/masa-orca/mandantory-cli-environment-builder/main/environment_builder.sh -o environment_builder.sh
-      - run: sh ./environment_builder.sh
+      - run: curl https://raw.githubusercontent.com/masa-orca/mandantory-cli-environment-builder/main/environment_builder.sh -o environment_builder2.sh
+      - run: sh ./environment_builder2.sh
