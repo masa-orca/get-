@@ -1,5 +1,5 @@
 # mandantory-cli-environment-builder
-This shell script builds ansible cli environment.
+This shell script installs `git` and builds ansible cli environment.
 
 This shell will
 - Update cache of package manager and upgrade using package manager.
