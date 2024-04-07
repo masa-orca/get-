@@ -74,7 +74,7 @@ do_install() {
        elif [ -r /.dockerenv ]; then
                 sh_c='sh -c'
        else
-		echo 'Error: Please run this installer as a non-root user.'
+		echo 'Warning: You are root user now. We recommend to run this script as non-root user.'
 		echo
 		exit 1
 	fi
