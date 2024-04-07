@@ -91,7 +91,7 @@ do_install() {
 				bookworm|jammy|mantic|noble)
 					python_package=python3.11
 					;;
-				focal)
+				bullseye|focal)
 					python_package=python3.9
 					;;
 				*)
