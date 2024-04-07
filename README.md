@@ -22,3 +22,9 @@ This shell script is available for these OS.
 |Ubuntu|jammy|3.11|
 |Ubuntu|mantic|3.11|
 |Ubuntu|noble|3.11|
+
+## How to use
+```sh
+$ curl https://raw.githubusercontent.com/masa-orca/mandantory-cli-environment-builder/main/environment_builder.sh -o environment_builder.sh
+$ sh ./environment_builder.sh
+```
