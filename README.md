@@ -1,6 +1,8 @@
 # mandantory-cli-environment-builder
 This shell script installs `git` and builds ansible cli environment.
 
+This shell script is for non-root user.
+
 This shell will
 - Update cache of package manager and upgrade using package manager.
 - Install `git` and `python3.x`.
