@@ -92,7 +92,7 @@ do_install() {
 			lsb_dist_codename=$( get_distribution_version_codename )
 			case "$lsb_dist_codename" in
 				bookworm|jammy|mantic|noble)
-					python_package=python3.11
+					python_package=python3.12
 					;;
 				bullseye|focal)
 					python_package=python3.9
@@ -121,7 +121,7 @@ do_install() {
 					$sh_c "${python_package} -m venv $HOME/venv >/dev/null"
 	     				echo "INFO: Installing ansible to venv."
 	  				$sh_c ". $HOME/venv/bin/activate && pip -q install -U pip"
-					$sh_c ". $HOME/venv/bin/activate && pip -q install ansible"
+					$sh_c ". $HOME/venv/bin/activate && pip -q install 'ansible<4'"
      	     				echo "INFO: Finished building ansible environment!"
 	     				echo "If you want to use ansible, please run 'source $HOME/venv/bin/activate'"
 				)
@@ -135,8 +135,8 @@ do_install() {
 			(
      				echo "INFO: Updating dnf packages."
 				$sudo_c 'dnf -q update -y'
-     				echo "INFO: Installing python3.11."
-      				$sudo_c 'dnf -q install -y python3.11 python3.11-pip'
+     				echo "INFO: Installing python3.12."
+      				$sudo_c 'dnf -q install -y python3.12 python3.12-pip'
 			)
 			if [ ! -d "$HOME/venv" ]; then
 				(
@@ -144,7 +144,7 @@ do_install() {
 					$sh_c "python3.11 -m venv $HOME/venv >/dev/null"
 	     				echo "INFO: Installing ansible to venv."
 	  				$sh_c ". $HOME/venv/bin/activate && pip -q install -U pip"
-					$sh_c ". $HOME/venv/bin/activate && pip -q install ansible"
+					$sh_c ". $HOME/venv/bin/activate && pip -q install 'ansible<4'"
 	     				echo "INFO: Finished building ansible environment!"
 	     				echo "If you want to use ansible, please run 'source $HOME/venv/bin/activate'"
      
