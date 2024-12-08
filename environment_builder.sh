@@ -91,8 +91,11 @@ do_install() {
 		debian|ubuntu)
 			lsb_dist_codename=$( get_distribution_version_codename )
 			case "$lsb_dist_codename" in
-				bookworm|jammy|mantic|noble)
+				noble)
 					python_package=python3.12
+					;;
+                                bookworm|jammy|mantic)
+					python_package=python3.11
 					;;
 				bullseye|focal)
 					python_package=python3.9
