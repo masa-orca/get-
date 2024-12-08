@@ -24,8 +24,6 @@ jobs:
           - image: ubuntu
             tag: jammy
           - image: ubuntu
-            tag: mantic
-          - image: ubuntu
             tag: noble
     container:
       image: ${{ matrix.image }}:${{ matrix.tag }}
