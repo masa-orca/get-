@@ -144,7 +144,7 @@ do_install() {
 			if [ ! -d "$HOME/venv" ]; then
 				(
 	     				echo "INFO: Generating python venv on $HOME."
-					$sh_c "python3.11 -m venv $HOME/venv >/dev/null"
+					$sh_c "python3.12 -m venv $HOME/venv >/dev/null"
 	     				echo "INFO: Installing ansible to venv."
 	  				$sh_c ". $HOME/venv/bin/activate && pip -q install -U pip"
 					$sh_c ". $HOME/venv/bin/activate && pip -q install 'ansible<4'"
